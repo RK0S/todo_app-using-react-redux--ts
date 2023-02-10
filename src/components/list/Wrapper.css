@@ -1,0 +1,16 @@
+.list {
+    width: 670px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.17);
+    border-radius: 41px;
+    padding: 70px 35px;
+    margin: 0 auto;
+}
+
+.date{
+    font-weight: 600;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 50px;
+}
