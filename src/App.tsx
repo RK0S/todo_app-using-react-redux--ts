@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Wrapper from './components/list/Wrapper';
+import Wrapper from './components/wrapper/Wrapper';
 
 import './styles/app.css';
 

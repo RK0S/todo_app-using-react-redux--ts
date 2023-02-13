@@ -1,7 +1,8 @@
 export enum todoActionTypes {
     ADD_TASK = 'ADD_TASK',
     REMOVE_TASKS = 'REMOVE_TASKS',
-    SET_FILTER = 'SET_FILTER'
+    SET_FILTER = 'SET_FILTER',
+    CHECK_TASK = 'CHECK_TASK'
 }
 
 export interface taskType {
@@ -25,10 +26,14 @@ interface setFilterAction {
     payload: string;
 }
 
+interface checkTaskAction {
+    type: todoActionTypes.CHECK_TASK;
+    payload: boolean
+}
 
 export interface todoState {
-    tasks: any[];
+    tasks: taskType[];
     filter: string;
 }
 
-export type todoAction = addTaskAction | removeTasksAction | setFilterAction 
+export type todoAction = addTaskAction | removeTasksAction | setFilterAction | checkTaskAction

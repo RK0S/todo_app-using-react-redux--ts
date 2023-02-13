@@ -6,3 +6,5 @@ const RootReducer = combineReducers({
 })
 
 export const store = createStore(RootReducer);
+
+export type RootState = ReturnType<typeof RootReducer>

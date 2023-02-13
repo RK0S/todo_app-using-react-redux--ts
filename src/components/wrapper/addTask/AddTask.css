@@ -1,0 +1,24 @@
+.addTaskBlock{
+    flex: 1 1 auto;
+}
+
+.addTaskWrapper {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.plus{
+    width: 23px;
+    height: 23px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.addInput {
+    font-size: 17px;
+}
+
+.hr {
+    width: 100%;
+    border: 1px solid #5e5e5e;
+}

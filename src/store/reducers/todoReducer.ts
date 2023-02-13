@@ -1,4 +1,4 @@
-import { todoActionTypes, todoState, todoAction } from '../../types/todo';
+import { todoActionTypes, todoState, todoAction, taskType } from '../../types/todo';
 
 const initialState: todoState = {
     tasks: [],
@@ -13,6 +13,8 @@ export const todoReducer = (state = initialState, action: todoAction): todoState
             return {...state, tasks: []}
         case todoActionTypes.SET_FILTER:
             return {...state, filter: action.payload}
+        // case todoActionTypes.CHECK_TASK:
+        //     return {...state, tasks: [...state.tasks, state.tasks.filter() ]}
         default:
             return state
     }
