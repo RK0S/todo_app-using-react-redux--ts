@@ -1,5 +1,6 @@
 .addTaskBlock{
     flex: 1 1 auto;
+    margin-bottom: 100px;
 }
 
 .addTaskWrapper {
@@ -16,6 +17,7 @@
 
 .addInput {
     font-size: 17px;
+    width: 100%;
 }
 
 .hr {

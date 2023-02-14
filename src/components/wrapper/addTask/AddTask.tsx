@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from 'react';
+import { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {Dispatch} from 'redux';
 import { todoAction, todoActionTypes } from '../../../types/todo';
@@ -9,17 +9,32 @@ const AddTask: FC = () => {
     const [task, setTask] = useState<string>('')
     const dispatch: Dispatch<todoAction> = useDispatch()
 
+    function createTask() {
+        if (task.length > 0) {
+            dispatch({type: todoActionTypes.ADD_TASK, payload: {
+                id: Date.now(),
+                title: task,
+                completed: false
+            }})
+            setTask('')
+        }
+    }
+
     function addTask(e: React.MouseEvent): void {
-        dispatch({type: todoActionTypes.ADD_TASK, payload: {
-            id: Date.now(),
-            title: task,
-            completed: false
-        }})
-        setTask('')
+        createTask()
     }
 
     function addTaskInput(e: React.ChangeEvent<HTMLInputElement>): void {
-        setTask(e.target.value)
+        const title = e.target.value
+        if (title.length <= 45) {
+            setTask(title)
+        }
+    }
+
+    const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+            createTask()
+        }
     }
 
     return (
@@ -37,6 +52,7 @@ const AddTask: FC = () => {
                     placeholder="Добавить задачу"
                     value={task}
                     onChange={addTaskInput}
+                    onKeyDown={onKeyDown}
                 />
             </div>
 

@@ -1,0 +1,15 @@
+.button {
+    background: white;
+    color: #020202;
+    padding: 0 4px;
+    border: 1px solid white;
+}
+
+.button:not(:last-child) {
+    margin-right: 10px;
+}
+
+.button__active {
+    border: 1px solid #000000;
+    border-radius: 2px;
+}

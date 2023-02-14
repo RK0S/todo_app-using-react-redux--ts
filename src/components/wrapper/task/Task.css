@@ -5,6 +5,8 @@
 .taskWrapper{
     position: relative;
     margin-bottom: 15px;
+    display: flex;
+    align-items: center;
 }
 
 .circle{
@@ -71,4 +73,11 @@
 .cross{
     text-decoration: line-through;
     color: #959595;
+}
+
+.cross_icon{
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    margin-left: auto;
 }

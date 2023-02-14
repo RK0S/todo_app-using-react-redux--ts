@@ -1,27 +1,49 @@
-import { FC, useState } from 'react';
-import { taskType } from '../../../types/todo';
+import { FC } from 'react';
+import { taskType, todoAction, todoActionTypes } from '../../../types/todo';
+import { useDispatch } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import './Task.css';
 
 const Task: FC<taskType> = (task: taskType) => {
-    const [checked, setChecked] = useState<boolean>(task.completed)
-    const classes = ['text']
-    if (checked) {
-        classes.push('cross')
+    const dispatch: Dispatch<todoAction> = useDispatch();
+    const classes = ['text'];
+    if (task.completed) {
+        classes.push('cross');
     }
 
-    function checkTask() {
-        setChecked(!checked)
-        console.log(checked);
+    function checkTask(e: React.ChangeEvent<HTMLInputElement>) {
+        dispatch({ type: todoActionTypes.CHECK_TASK, payload: task.id });
+    }
+
+    const removeTask = (e: React.MouseEvent<HTMLImageElement>) => {
+        dispatch({ type: todoActionTypes.REMOVE_TASK, payload: task.id})
     }
 
     return (
-        <li className='taskBlock'>
-            <div className='taskWrapper'>
-                <input onChange={checkTask} id={task.id.toString()} type="checkbox" checked={checked} className='circle' />
-                <label className={classes.join(' ')} htmlFor={task.id.toString()}>{task.title}</label>
+        <li className="taskBlock">
+            <div className="taskWrapper">
+                <input
+                    onChange={checkTask}
+                    id={task.id.toString()}
+                    type="checkbox"
+                    checked={task.completed}
+                    className="circle"
+                />
+                <label
+                    className={classes.join(' ')}
+                    htmlFor={task.id.toString()}
+                >
+                    {task.title}
+                </label>
+                <img
+                    className="cross_icon"
+                    src={require('../../../img/cross.png')}
+                    alt="cross"
+                    onClick={removeTask}
+                />
             </div>
-            <hr className='hr'/>   
+            <hr className="hr" />
         </li>
     );
 };
